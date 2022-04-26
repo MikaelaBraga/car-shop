@@ -1,7 +1,7 @@
-export interface Model {
+export interface Model<T> {
   create(object: T): Promise<T>,
   read(): Promise<T[]>,
-  readOnde(id: string): Promise<T>,
-  update(id: string): Promise<T | null>,
-  delete(id: string): Promise< | null>,
+  readOne(id: string): Promise<T | null>,
+  update(id: string, obj: T): Promise<T | null>,
+  delete(id: string): Promise<T | null>,
 }
