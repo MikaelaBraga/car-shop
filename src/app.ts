@@ -1,8 +1,6 @@
 import express, { Router } from 'express';
 import connectToDatabase from './connection';
 
-// iniciando projeto
-
 class App {
   public app: express.Application;
 
