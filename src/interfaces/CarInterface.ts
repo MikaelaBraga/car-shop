@@ -6,5 +6,9 @@ const CarSchema = z.object({
   seatsQty: z.number().gte(2).lte(7),
 });
 
-// extendendo um type --> https://www.typescriptlang.org/docs/handbook/advanced-types.html
-export type Car = z.infer<typeof CarSchema> & Vehicle;
+export type CarTypeZod = z.infer<typeof CarSchema>;
+
+export interface Car extends Vehicle {
+  doorsQty: number,
+  seatsQty: number,
+}
