@@ -6,7 +6,10 @@ const CarSchema = z.object({
   seatsQty: z.number().gte(2).lte(7),
 });
 
-export type CarTypeZod = z.infer<typeof CarSchema>;
+type CarTypeZod = z.infer<typeof CarSchema> & Vehicle;
+
+export default CarTypeZod;
+export { CarSchema };
 
 export interface Car extends Vehicle {
   doorsQty: number,
