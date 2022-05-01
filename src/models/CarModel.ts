@@ -12,7 +12,8 @@ const carSchema = new Schema<CarDocument>({
   buyValue: Number,
   seatsQty: Number,
   doorsQty: Number,
-});
+}, { versionKey: false });
+// referencies -> https://stackoverflow.com/questions/13699784/mongoose-v-property-hide
 
 class CarModel extends MongoModel<CarTypeZod> {
   constructor(model = createModel('Cars', carSchema)) {
