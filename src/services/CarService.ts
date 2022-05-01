@@ -1,6 +1,7 @@
 import CarTypeZod, { CarSchema } from '../Schemas/CarSchema';
 import Service, { ServiceError } from './index';
 import CarModel from '../models/CarModel';
+import { Car } from '../interfaces/CarInterface';
 
 class CarService extends Service<CarTypeZod> {
   constructor(model = new CarModel()) {
@@ -15,6 +16,8 @@ class CarService extends Service<CarTypeZod> {
     }
     return this.model.create(obj);
   };
+
+  read = async (): Promise<Car[]> => this.model.read();
 }
 
 export default CarService;

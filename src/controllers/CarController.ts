@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import Controller, { ResponseError } from '.';
 import CarService from '../services/CarService';
 import CarTypeZod from '../Schemas/CarSchema';
+import { Car } from '../interfaces/CarInterface';
 
 class CarController extends Controller<CarTypeZod> {
   private $route: string;
@@ -28,6 +29,14 @@ class CarController extends Controller<CarTypeZod> {
     } catch (err) {
       return res.status(500).json({ error: this.errors.internalErr });
     }
+  };
+
+  read = async (
+    _req: Request,
+    res: Response<Car[] | ResponseError>,
+  ): Promise<typeof res> => {
+    const cars = await this.service.read();
+    return res.status(200).json(cars);
   };
 }
 
