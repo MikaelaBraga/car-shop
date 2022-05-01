@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import CarService from '../../../services/CarService'
 
 describe('car service layer test', () => {
+  beforeEach(sinon.restore);
   const carService = new CarService();
   
   describe('add new car', () => {
@@ -14,7 +15,7 @@ describe('car service layer test', () => {
       buyValue: 350000,
       seatsQty: 2,
       doorsQty: 2
-    }
+    } // mockar num arquivo
 
     const carInput = {
       model: "Ferrari",
@@ -23,7 +24,7 @@ describe('car service layer test', () => {
       buyValue: 350000,
       seatsQty: 2,
       doorsQty: 2
-    }
+    } // mockar num arquivo
     
     it('should return all properties required', async () => {
       sinon.stub(carService, 'create').resolves(carMock);
