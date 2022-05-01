@@ -7,16 +7,16 @@ describe('car model layer test', () => {
   beforeEach(sinon.restore);
   const carModel = new CarModel();
   
+  const carMock = {
+    _id: "626dd8f9bd1550fc5dc57ea4",
+    model: "Ferrari",
+    year: 1963,
+    color: "red",
+    buyValue: 350000,
+    seatsQty: 2,
+    doorsQty: 2
+  }
   describe('add new car', () => {
-    const carMock = {
-      _id: "626dd8f9bd1550fc5dc57ea4",
-      model: "Ferrari",
-      year: 1963,
-      color: "red",
-      buyValue: 350000,
-      seatsQty: 2,
-      doorsQty: 2
-    }
 
     const carInput = {
       model: "Ferrari",
@@ -41,5 +41,7 @@ describe('car model layer test', () => {
     });
 
   });
+
+
 
 });
