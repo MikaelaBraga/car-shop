@@ -34,12 +34,19 @@ describe('car controller layer test', () => {
     } // mockar num arquivo
 
 
-    // it('should return all properties required', async () => {
-    //   sinon.stub(carController, 'create').resolves(carMock);
-    //   const car = await carController.create(carInput, carMock);
 
-    //   expect()
-    // });
+    it('should return all properties required', async () => {
+      sinon.stub(carController, 'create').resolves(carMock as any);
+      const car = await carController.create(carInput as any, carMock as any);
+
+      expect(car).to.be.have.property('_id');
+      expect(car).to.be.have.property('model');
+      expect(car).to.be.have.property('year');
+      expect(car).to.be.have.property('color');
+      expect(car).to.be.have.property('buyValue');
+      expect(car).to.be.have.property('seatsQty');
+      expect(car).to.be.have.property('doorsQty');
+    });
 
   });
 
