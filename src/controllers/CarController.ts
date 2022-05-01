@@ -38,6 +38,27 @@ class CarController extends Controller<CarTypeZod> {
     const cars = await this.service.read();
     return res.status(200).json(cars);
   };
+
+  readOne = async (
+    req: Request,
+    res: Response<Car | ResponseError | null>,
+  ): Promise<typeof res> => {
+    try {
+      const { id } = req.params;
+      
+      if (id.length < 24) { 
+        return res.status(400).json({ error: this.errors.idMustHave });
+      }
+      
+      const car = await this.service.readOne(id);
+
+      if (!car) return res.status(404).json({ error: this.errors.notFound });
+
+      return res.status(200).json(car);
+    } catch (error) {
+      return res.status(500).json({ error: this.errors.internalErr });
+    }
+  };
 }
 
 export default CarController;
