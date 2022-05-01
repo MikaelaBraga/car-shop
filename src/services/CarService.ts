@@ -1,4 +1,4 @@
-import CarTypeZod, { CarSchema } from '../interfaces/CarInterface';
+import CarTypeZod, { CarSchema } from '../Schemas/CarSchema';
 import Service, { ServiceError } from './index';
 import CarModel from '../models/CarModel';
 

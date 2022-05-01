@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import Controller from '.';
+import Controller, { ResponseError } from '.';
 import CarService from '../services/CarService';
-import CarTypeZod from '../interfaces/CarInterface';
+import CarTypeZod from '../Schemas/CarSchema';
 
 class CarController extends Controller<CarTypeZod> {
   private $route: string;
@@ -13,7 +13,10 @@ class CarController extends Controller<CarTypeZod> {
 
   get route() { return this.$route; }
 
-  create = async (req: Request, res: Response): Promise<typeof res> => {
+  create = async (
+    req: Request<CarTypeZod>,
+    res: Response<CarTypeZod | ResponseError>,
+  ): Promise<typeof res> => {
     const { body } = req;
 
     try {

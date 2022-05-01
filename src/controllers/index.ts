@@ -17,7 +17,8 @@ abstract class Controller<T> {
 
   constructor(protected service: Service<T>) {}
 
-  abstract create(req: Request, res: Response): Promise<typeof res>;
+  abstract create(req: Request<T>,
+    res: Response<T | ResponseError>): Promise<typeof res>;
 
   read = async (_req: Request, res: Response): Promise<typeof res> => {
     try {
