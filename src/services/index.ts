@@ -20,11 +20,11 @@ abstract class Service<T> {
     return this.model.readOne(id);
   }
 
-  public async update(id: string, obj: T): Promise<T | null | ZodError> {
+  public async update(id: string, obj: T): Promise<T | null | ServiceError> {
     return this.model.update(id, obj);
   }
 
-  public async delete(id: string): Promise<T | null | ZodError> {
+  public async delete(id: string): Promise<T | null | ServiceError> {
     return this.model.delete(id);
   }
 }
